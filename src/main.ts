@@ -1,3 +1,4 @@
+import './reset.css'
 import 'virtual:uno.css'
 import type { ColorData } from './colorData'
 import { getColorsData, setColorsData } from './colorData'
@@ -32,9 +33,21 @@ function renderColors(colors: ColorData[]) {
   colorList.innerHTML = '';
   colors.forEach((color) => {
     const li = document.createElement('li');
-    li.textContent = color.name;
+    li.className = 'cursor-pointer draggable';
+    li.draggable = true;
+    li.innerHTML = `
+    <div style="background-color: rgb(${color.r},${color.g},${color.b} );" class="flex p-4 pt-1 gap-4 rounded-lg mb-1">
+      <div class="bg-white bg-op-40 p-2 rounded-lg min-w-20 text-center">${color.name}</div>
+      <div class="bg-white bg-op-20 p-2 rounded-lg text-center grow-1">rgb( ${color.r}, ${color.g}, ${color.b} )</div>
+    </div>
+    `
     colorList.appendChild(li);
   });
+  if (colors.length) {
+    saveButton.removeAttribute("disabled");
+  } else {
+    saveButton.setAttribute("disabled", "");
+  }
 }
 
 saveButton.addEventListener('click', () => {

@@ -1,21 +1,41 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TREAT</title>
-  </head>
-  <body>
-    <body>
-      <div>
-        <h1>Tidy Reorder Every Adorable Tint</h1>
-        <p>Tool for rearranging Your glp color palettes - Treat Your Colors Right!</p>
 
-        <input type="file" id="fileInput" accept=".gpl" />
-        <ul id="colorList"></ul>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TREAT</title>
+</head>
 
-        <button id="saveButton">Save</button>
+<body class="font-sans">
+  <header class="sticky top-0 h-20 bg-white shadow  b-b-1 b-b-solid b-b-gray p-x-4">
+    <div class="max-w-screen-xl h-full flex gap-4 items-center m-a">
+      <h1 class="font-black c-rose-500 font-size-9">TREAT</h1>
+      <div class="grow flex h-full c-teal-600">
+        <p class="flex-self-start p-4 font-semibold">Tidy & Reorder Every Adorable Tint</p>
+        <p class="flex-self-end p-4 mr-0 ml-auto text-right font-size-3">Tool for rearranging Your glp color palettes <br>- Treat Your Colors
+          Right!</p>
       </div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+    </div>
+  </header>
+  <main>
+    <div class="md:max-w-3/4 lg:max-w-1/2 m-x-a p-4 flex flex-col gap-4">
+      <label for="fileInput" class="px-4 py-2 rounded-md c-white font-semibold bg-teal-600 hover:bg-teal-700 cursor-pointer flex-self-center">
+        Upload .gpl file
+      </label>
+      <input type="file" id="fileInput" accept=".gpl" class="hidden"/>
+      <ul id="colorList" class="p-4 rounded-lg b-2 b-solid b-gray">
+        Colors...
+      </ul>
+    </div>
+    <div class="sticky bottom-0 bg-white p-4">
+    <div class="max-w-screen-xl flex gap-4 justify-center m-a">
+      <button id="saveButton" class="px-4 py-2 rounded-md c-white font-semibold bg-teal-600 hover:bg-teal-700 disabled:bg-gray disabled:cursor-default" disabled>Save</button>
+    </div>
+    </div>
+  </main>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
 </html>
