@@ -1,12 +1,21 @@
 # TREAT - Tidy & Reorder Every Adorable Tint
 
-TREAT is a web-based tool for rearranging `.gpl` color palettes. It allows you to upload a GIMP Palette file, reorder the colors using drag-and-drop, and then save the sorted palette.
+**TREAT** is a simple, web-based tool designed for rearranging `.gpl` color palette files. It allows you to upload a `.gpl` file, reorder the colors by dragging and dropping, and then save the sorted palette.
+
+## Project Status
+
+🚧 **Work in Progress** 🚧
+
+This project is a work in progress. I am building it primarily for my personal use, as I couldn’t find an existing tool that met my needs without installing additional software. My goal is to create a fast, simple, and efficient tool for managing `.gpl` files directly in the browser. 
+
+Plus, I wanted to have some fun with it—after all, these are adorable tints we’re talking about, and "TREAT" is a punny name that adds a bit of charm to the process!
 
 ## Features
 
-- **Upload GIMP Palette (`.gpl`) files:** Validates that the uploaded file starts with "GIMP Palette" and contains correctly formatted color data.
-- **Drag-and-drop reordering:** Easily rearrange colors in the palette by dragging and dropping.
-- **Save the sorted palette:** Download your sorted color palette as a `.gpl` file.
+- **Upload `.gpl` files**: Load your GIMP palette files into the tool.
+- **Drag & Drop Sorting**: Easily reorder your colors using drag and drop.
+- **Save Sorted Palette**: Save the rearranged palette back to a `.gpl` file.
+
 
 ## Usage
 
@@ -56,10 +65,18 @@ If you prefer to run the tool locally, follow these steps:
    npm run preview
    ```
 
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
 ## License
 
-This project is licensed under the [Creative Commons Zero v1.0 Universal (CC0-1.0)](LICENSE) License.
+This project is licensed under the **Creative Commons Zero v1.0 Universal (CC0-1.0) License**. See the [LICENSE](./LICENSE) file for more details.
+
+## Contribution
+
+Since this is a personal project and a work in progress, I’m not currently accepting direct contributions. However, I am open to **feature requests**! If you have an idea for a new feature or an improvement, please feel free to open an issue or reach out.
+
+## Acknowledgements
+
+Thanks to the creators of the tools and libraries used in this project, including:
+
+- [UnoCSS](https://github.com/unocss/unocss)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Vite](https://vitejs.dev/)
