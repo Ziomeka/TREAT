@@ -31,6 +31,16 @@ fileInput.addEventListener('change', (event) => {
   }
 });
 
+colorList.addEventListener('dragover', (e) => {
+  const targetLi = (e.target as HTMLElement).closest('li');
+  console.log('closet', e.target, targetLi)
+  if (targetLi) {
+    e.preventDefault();
+    resetSpacing();
+    targetLi.classList.add('pt-10');
+  }
+});
+
 function renderColors(colors: ColorData[]) {
   colorList.innerHTML = '';
   colors.forEach((color, index) => {
@@ -38,18 +48,22 @@ function renderColors(colors: ColorData[]) {
     li.className = 'cursor-pointer';
     li.draggable = true;
     li.innerHTML = `
-    <div style="background-color: rgb(${color.r},${color.g},${color.b} );" class="flex p-4 pt-1 gap-4 rounded-lg mb-1">
-      <div class="bg-white bg-op-40 p-2 rounded-lg min-w-20 text-center">${color.name}</div>
-      <div class="bg-white bg-op-20 p-2 rounded-lg text-center grow-1">rgb( ${color.r}, ${color.g}, ${color.b} )</div>
-    </div>
+      <div style="background-color: rgb(${color.r},${color.g},${color.b} );" class="flex p-4 pt-1 gap-4 rounded-lg">
+        <div class="bg-white bg-op-40 p-2 rounded-lg min-w-20 text-center">${index}   ${color.name}</div>
+        <div class="bg-white bg-op-20 p-2 rounded-lg text-center grow-1">rgb( ${color.r}, ${color.g}, ${color.b} )</div>
+      </div>
     `
 
     li.addEventListener('dragstart', (e) => {
       e.dataTransfer?.setData('text/plain', index.toString());
+      li.classList.add('op-70')
+      setTimeout(() => {
+        li.classList.add('hidden')
+      }, 0);
     });
 
-    li.addEventListener('dragover', (e) => {
-      e.preventDefault();
+    li.addEventListener('dragend', () => {
+      li.classList.remove('hidden', 'op-70')
     });
 
     li.addEventListener('drop', (e) => {
@@ -58,7 +72,7 @@ function renderColors(colors: ColorData[]) {
       if (draggedIndex !== index) {
         const draggedItem = colors[draggedIndex];
         colors.splice(draggedIndex, 1);
-        colors.splice(index, 0, draggedItem);
+        colors.splice(draggedIndex > index ? index : index - 1, 0, draggedItem);
         renderColors(colors);
       }
     });
@@ -69,6 +83,12 @@ function renderColors(colors: ColorData[]) {
   } else {
     saveButton.setAttribute("disabled", "");
   }
+}
+
+function resetSpacing() {
+  Array.from(colorList.children).forEach((child) => {
+    (child as HTMLLIElement).classList.remove('pt-10');
+  });
 }
 
 saveButton.addEventListener('click', () => {
